@@ -14,4 +14,9 @@ function showTotalNumberPhotos(totalHits) {
   Notify.success(`Hooray! We found ${totalHits} images.`);
 }
 
-export { onFailureRequest, onReachedEnd, showTotalNumberPhotos };
+function enterRequest() {
+  Notify.warning('"Please enter your request"');
+  //
+}
+
+export { onFailureRequest, onReachedEnd, showTotalNumberPhotos, enterRequest };
