@@ -7,7 +7,6 @@ const refs = {
   btnLoad: document.querySelector('.load-more'),
 };
 function markupGallery(items) {
-  // console.log(items[0].webformatURL);
   let markup = items
     .map(
       item =>
@@ -30,7 +29,7 @@ function markupGallery(items) {
         </div>`
     )
     .join('');
-  // console.log(markup);
+
   return refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 

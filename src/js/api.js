@@ -1,4 +1,4 @@
-export { renderGallery };
+import axios from 'axios';
 
 async function renderGallery(searchQuery, page, per_page) {
   const BASE_URL = `https://pixabay.com/api/?`;
@@ -12,6 +12,14 @@ async function renderGallery(searchQuery, page, per_page) {
     per_page,
     lang: 'en',
   });
-  const response = await fetch(`${BASE_URL}${searchParams}`);
+
+  try {
+    const response = await axios(`${BASE_URL}${searchParams}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+
   return await response.json();
 }
+export { renderGallery };

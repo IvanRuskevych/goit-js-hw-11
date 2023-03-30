@@ -38,27 +38,23 @@ async function onBtnSearchSubmit(e) {
 
   resetGallery();
 
-  try {
-    const photos = await renderGallery(searchQuery, 1, per_page);
-    if (photos.totalHits === 0) {
-      onFailureRequest();
-      return hideBtnLoadMore();
-    }
-
-    showTotalNumberPhotos(photos.totalHits);
-    markupGallery(photos.hits);
-    showBtnLoadMore();
-
-    currentPageNumber = 1;
-
-    if (Math.ceil(photos.totalHits) / per_page < page) {
-      hideBtnLoadMore();
-      return onReachedEnd();
-    }
-    console.log(photos);
-  } catch (error) {
-    console.log(error);
+  const photos = await renderGallery(searchQuery, 1, per_page);
+  if (photos.totalHits === 0) {
+    onFailureRequest();
+    return hideBtnLoadMore();
   }
+
+  showTotalNumberPhotos(photos.totalHits);
+  markupGallery(photos.hits);
+  showBtnLoadMore();
+
+  currentPageNumber = 1;
+
+  if (Math.ceil(photos.totalHits) / per_page < page) {
+    hideBtnLoadMore();
+    return onReachedEnd();
+  }
+  console.log(photos);
 }
 
 async function onBtnLoadClick() {
