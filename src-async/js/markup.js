@@ -7,11 +7,12 @@ const refs = {
   btnLoad: document.querySelector('.load-more'),
 };
 function markupGallery(items) {
+  // console.log(items[0].webformatURL);
   let markup = items
     .map(
       item =>
         `<div class="photo-card">
-          <a href="${item.largeImageURL}"><img src="${item.webformatURL}" alt="${item.tags}" loading="lazy" /></a>
+          <img src="${item.webformatURL}" alt="${item.tags}" loading="lazy" />
           <div class="info">
             <p class="info-item">
               <b>Likes ${item.likes}</b>
@@ -29,8 +30,8 @@ function markupGallery(items) {
         </div>`
     )
     .join('');
-
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  // console.log(markup);
+  return refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 function resetGallery() {
